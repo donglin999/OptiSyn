@@ -31,3 +31,4 @@ __pycache__/
 # Sensitive
 *.env
 .env
+reports/full_pipeline_report.html
