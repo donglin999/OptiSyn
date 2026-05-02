@@ -1008,6 +1008,77 @@ D1（GSE161878 vagal up DEG 在 NTS 神经元投影）和 D2（58 Mo 严选在 N
 ![celltype_flow_counts_bar](../results/celltype_review/celltype_flow_counts_bar.png)
 > 评审：✅ Mo 在所有筛选步都领先；Am 第 2；Nh 第 3；Ne/Ly 候选稀少不适合做主分析。
 
+### 9.4-Y 同事 Python 脚本方法学 review（GSE42639-20260502-1.py）
+
+**触发**: 同事用一份 Python 脚本跑 GSE42639 的差异分析。审查脚本后发现**致命方法学错误**。
+
+**❌ 致命错误 1 — 输入文件用错**
+
+```python
+# 同事 line 26
+detect_df = pd.read_csv('GSE42639_detection.tsv', sep='\t')
+# 该文件是 Illumina 探针 DETECTION P-VALUE 矩阵 (0-1 范围)
+# 它不是表达量, 而是 "探针是否被检测到" 的概率指标
+```
+
+**❌ 致命错误 2 — 在 p-value 上做 log2 fold change**
+
+```python
+log2fc = np.log2(treat_mean_adj) - np.log2(control_mean_adj)
+```
+对 0–1 的 p-value 做 log2 没有 fold-change 意义。p=0 经 +1e−10 后 log2≈−33，p=0.5 对应 log2≈−1，比较的是"探针接近 0 的程度差异"。
+
+**❌ 致命错误 3 — t-test 假设崩溃**
+
+detection p 是 bimodal 分布（41.8% 数据点 <0.05），不近似高斯，Welch t-test 不适用。
+
+**⚠️ 其它缺漏**:
+- 没 normalization（批次/技术变异未矫正）
+- 没探针级 detection p 过滤
+- 没探针 → SYMBOL 映射
+- 应该用 limma + eBayes 而非 t-test（n=3 小样本时差异巨大）
+
+**实证对比 — Mo PR8_100 vs Sham**:
+
+| 指标 | 同事方法 | 我们方法 |
+|---|---|---|
+| 显著 DEG 数 | **1** | **3206** |
+| 上调 / 下调 | 1 / 0 | 1660 / 1546 |
+| **DEG 重叠率** | **0%** | — |
+
+**关键基因方向对比**（保护性轴的"主角"）:
+
+| 基因 | 同事 logFC / padj | 我们 logFC / padj | 状态 |
+|---|---|---|---|
+| Cx3cr1 | +0.00 / NaN | −2.86 / 6.5e−08 | 同事**漏检** |
+| Klf2 | +21.76 / 0.84 | −2.49 / 1.5e−07 | 同事**虚假上调** |
+| Arrb1 | +23.35 / 1.00 | −2.51 / 2.3e−07 | 同事**虚假上调** |
+| Cd209a | +7.84 / 0.84 | −2.01 / 5.6e−06 | 同事**虚假上调** |
+| Btla | +0.00 / NaN | −1.92 / 2.4e−05 | 同事漏检 |
+| Il16 | +0.00 / NaN | −0.98 / 4.7e−05 | 同事漏检 |
+| Gstm1 | +21.76 / 0.84 | −1.98 / 3.9e−06 | 同事**虚假上调** |
+
+**所有 Mo 保护性核心基因，同事方法要么漏检（值 0/NaN），要么方向倒错（虚假"+22"上调）。**
+
+**图 9.4.Y.1** — Mo PR8_100 vs Sham 双方法 logFC 对比散点：
+![logFC_compare_scatter](../results/celltype_review/colleague_method_check/logFC_compare_scatter.png)
+> 评审：✅ 横轴（同事）vs 纵轴（我们）呈**反相关**结构（左上 + 右下两个簇），证实"detection p 越小 = 表达越高"的反向关系，导致同事方法的 logFC 方向跟真实 fold change 系统性倒置。
+
+**碰巧成立的部分**: 同事的"5 细胞中 Mo 应答最强"这个**结论**仍然成立 — 因为感染状态下 Mo 大量基因被检测到 → detection p 大量变化 → 同事方法也能识别"应答最强细胞"。但**具体 DEG 列表完全不能用**。
+
+**修复建议（已在报告外的章节给同事）**:
+1. 输入换成 `intensity.tsv`（原始荧光强度）
+2. 用 R `limma::neqc()` 标准化 + 探针 detection p<0.05 在 ≥2 样本过滤
+3. 探针 → SYMBOL 映射（`illuminaMousev2.db`）
+4. limma + eBayes 替代 t-test
+5. 直接复用项目里的 `scripts/02_GSE42639_preprocess.R` + `scripts/03_celltype_amplitude.R`
+
+**输出**:
+- `results/celltype_review/colleague_method_check/logFC_compare_table.tsv` 全探针 logFC 对照
+- `results/celltype_review/colleague_method_check/logFC_compare_scatter.pdf/png` 双方法 logFC scatter
+- `results/celltype_review/colleague_method_check/colleague_vs_ours.rds` 中间对象
+- `scripts/_lib/colleague_method_replication.R` 复刻脚本
+
 ### 9.5 36 张图整体评审结果
 
 | 类别 | 数量 | 状态 |
