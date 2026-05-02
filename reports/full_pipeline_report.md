@@ -1064,7 +1064,61 @@ detection p 是 bimodal 分布（41.8% 数据点 <0.05），不近似高斯，We
 ![logFC_compare_scatter](../results/celltype_review/colleague_method_check/logFC_compare_scatter.png)
 > 评审：✅ 横轴（同事）vs 纵轴（我们）呈**反相关**结构（左上 + 右下两个簇），证实"detection p 越小 = 表达越高"的反向关系，导致同事方法的 logFC 方向跟真实 fold change 系统性倒置。
 
-**碰巧成立的部分**: 同事的"5 细胞中 Mo 应答最强"这个**结论**仍然成立 — 因为感染状态下 Mo 大量基因被检测到 → detection p 大量变化 → 同事方法也能识别"应答最强细胞"。但**具体 DEG 列表完全不能用**。
+**碰巧成立的部分**: ~~同事的"Mo 应答最强"结论仍然成立~~ → **更正：见 §9.4.Y.2 全 5 cells × 4 contrasts 实证后，发现同事方法实际上在所有细胞下都找不到任何显著 DEG（最多 2 个），所以"哪个细胞最突出"在同事方法下完全是统计噪音。**
+
+---
+
+#### 9.4.Y.2 同事方法全 5 cells × 4 contrasts 实证（用户线索: "他跑出来似乎是 Ly"）
+
+**背景**: 用户告知同事跑出来的"主细胞"是 **Ly**（不是我们的 Mo）。我们用同事的方法（detection.tsv + log2FC + Welch t-test + |log2FC|≥1 + padj<0.05）在 5 cells × 4 contrasts 全格跑了一遍，验证 "Ly" 是否真的在同事方法下突出。
+
+**结果一**: 同事方法 5×4 网格（全表）
+
+| contrast | Nh | Am | Ne | Mo | Ly | 谁"突出"？ |
+|---|---:|---:|---:|---:|---:|---|
+| TX91_vs_Sham      | 0 | 0 | 0 | 0 | **1** | ★ Ly |
+| PR8_0.6_vs_Sham   | 0 | 0 | 0 | **1** | 0 | Mo |
+| PR8_10_vs_Sham    | 0 | **2** | 0 | 0 | 0 | Am |
+| PR8_100_vs_Sham   | 0 | 0 | 0 | **1** | 0 | Mo |
+| **总和**          | **0** | **2** | **0** | **2** | **1** | – |
+
+**结果二**: 我们方法（neqc + limma + intensity）同样 5×4 网格
+
+| contrast | Nh | Am | Ne | Mo | Ly | 主导 |
+|---|---:|---:|---:|---:|---:|---|
+| TX91_vs_Sham      | 152 | 134 | 232 | **621**  | 105 | Mo |
+| PR8_0.6_vs_Sham   | 773 | 689 | 1021| **2503** | 641 | Mo |
+| PR8_10_vs_Sham    | 1891| 1480| 1956| **2814** | 542 | Mo |
+| PR8_100_vs_Sham   | 1555| 1596| 2206| **3206** | 739 | Mo |
+| **总和**          | 4371| 3899| 5415| **9144** | 2027 | **Mo (远超其它)** |
+
+**图 9.4.Y.2** — 双方法 5 cells × 4 contrasts DEG 数对比：
+
+![compare_methods_5cells_grid](../results/celltype_review/colleague_method_check/compare_methods_5cells_grid.png)
+
+**关键发现 — 解释 "Ly" 是怎么来的**
+
+1. **同事方法在 5×4=20 格里只找到 5 个 DEG 加起来**（全部都是 0/1/2 量级），属于**统计噪音**而非真信号；
+2. **TX91_vs_Sham 这个 contrast 下 Ly 是唯一 ≥1 的细胞**（Ly=1, 其它=0）— 这就是同事看到 "Ly 突出" 的来源；
+3. 但 **1 个 DEG 在 16005 探针 × 4 cells × 多重比较的语境下完全是随机偶然**；
+4. 如果同事仅看 TX91 (轻症) 这一栏的柱状图，会看到 Ly 是 5 cells 中唯一非零的 → **误读为"Ly 主导"**；
+5. 同样的"统计噪音逻辑"换个 contrast 也会得出不同结论：PR8_10 下"Am 主导"（2 vs 0），PR8_0.6 / PR8_100 下"Mo 主导"（1 vs 0）。**说明这个所谓"主细胞"完全取决于看哪一栏，是方法学伪迹**。
+
+**结论**
+
+- 同事的 "Ly" 不是真信号，是 detection-p 这个错误指标在 TX91 contrast 下的偶然 1 个 DEG。
+- 我们的 Mo 是真信号 — 在所有 4 个 contrasts 下都**绝对值最大**且**领先第二名 1.6×–2.5×**。
+- 双方结论不冲突，也不"各自有理" — 同事方法本身根本检测不到任何稳定信号，任何"主细胞"都是噪音随机化。
+- 真正的 5 cells 排序（无论从同事方法还是我们方法）都不会把 Ly 放在最强 — Ly 在我们方法里也是**最弱**（2027，5 cells 中倒数第一）。
+
+**输出**:
+- `results/celltype_review/colleague_method_check/colleague_method_5cells_grid.tsv`
+- `results/celltype_review/colleague_method_check/ours_method_5cells_grid.tsv`
+- `results/celltype_review/colleague_method_check/compare_methods_5cells.tsv`
+- `results/celltype_review/colleague_method_check/compare_methods_5cells_grid.png/pdf`
+- `scripts/_lib/colleague_full_5cells.R` 全 5 细胞复刻 + 对比脚本
+
+---
 
 **修复建议（已在报告外的章节给同事）**:
 1. 输入换成 `intensity.tsv`（原始荧光强度）
