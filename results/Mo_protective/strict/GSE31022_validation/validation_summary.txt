@@ -1,5 +1,5 @@
 === GSE31022 跨毒株时序验证 (Mo 严选 58 靶点) ===
-时间: 2026-04-30 16:36:11
+时间: 2026-05-02 10:57:09
 数据集: GSE31022 (C57BL/6 mouse H1N1, lung, D1-D6, 3 Ctrl + 3*6 = 21 样本)
 源靶点: results/Mo_protective/strict/core_targets_strict.tsv (n=58)
 

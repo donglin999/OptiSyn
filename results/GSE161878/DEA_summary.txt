@@ -1,5 +1,5 @@
 === GSE161878 迷走神经感觉神经节 IAV vs Mock 差异分析 ===
-时间: 2026-04-30 20:21:28
+时间: 2026-05-02 10:57:27
 脚本: scripts/09_GSE161878_DESeq2.R
 方法: DESeq2 (Wald) + apeglm LFC shrinkage
 阈值: |log2FC| >= 0.585 & FDR < 0.05

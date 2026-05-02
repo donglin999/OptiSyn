@@ -1,5 +1,5 @@
 === Mo -> vagal 神经元区室 LR 通讯 v2 ===
-时间: 2026-05-01 02:49:34
+时间: 2026-05-02 10:57:15
 脚本: scripts/12_CellChat_neuron_compartment_LR.R
 
 配体源: GSE42639 Mo 严选 58 (results/Mo_protective/strict/core_targets_strict.tsv)

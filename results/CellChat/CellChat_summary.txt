@@ -1,5 +1,5 @@
 === Mo -> vagal sensory ganglia LR 通讯 (CellChat 风格) ===
-时间: 2026-04-30 20:22:21
+时间: 2026-05-02 10:57:13
 脚本: scripts/10_CellChat_Mo_to_vagus.R
 
 配体源: GSE42639 Mo 严选 58 (Mo_protective/strict/core_targets_strict.tsv)

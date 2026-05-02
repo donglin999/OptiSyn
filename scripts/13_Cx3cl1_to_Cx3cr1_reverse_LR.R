@@ -39,6 +39,9 @@ set.seed(42)
 TS <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
 
 ROOT <- "/Users/wuxiuxiang/project/dongmei/OptiSyn"
+
+# 启用中文字体 (showtext + macOS STHeiti)
+source(file.path(ROOT, "scripts/_lib/setup_fonts.R"))
 OUT  <- file.path(ROOT, "results/CellChat/Cx3cl1_to_Cx3cr1_reverse")
 dir.create(OUT, recursive = TRUE, showWarnings = FALSE)
 

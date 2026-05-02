@@ -30,6 +30,9 @@ set.seed(42)
 TS <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
 
 ROOT <- "/Users/wuxiuxiang/project/dongmei/OptiSyn"
+
+# 启用中文字体 (showtext + macOS STHeiti)
+source(file.path(ROOT, "scripts/_lib/setup_fonts.R"))
 OUT  <- file.path(ROOT, "results/GSE161878")
 PROC <- file.path(ROOT, "processed_data/GSE161878")
 dir.create(OUT,  recursive = TRUE, showWarnings = FALSE)
