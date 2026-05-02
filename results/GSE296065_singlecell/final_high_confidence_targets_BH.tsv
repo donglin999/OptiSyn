@@ -1,0 +1,2 @@
+gene_symbol	avg_log2FC_target_vs_bg	p_val_adj_specificity	pct_target	pct_bg	avg_log2FC_V7_vs_R7	p_val_adj_group	p_val_adj_BH_in_subset	pct_V7	pct_R7
+Cx3cr1	2.62385503070334	0	0.464	0.105	0.861629724257398	1	0.00121699951038553	0.174	0.128

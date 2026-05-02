@@ -1,0 +1,2 @@
+L_label	ligand_complex	ligand_subunits	receptor_complex	receptor_subunits	n_rec_subunits	n_rec_in_neuron_pool	rec_pool_complete	pathway_name	annotation	interaction_name	L_expr_Mo_TX91	L_rn	R_expr_vagus_IAV	R_expr_vagus_Mock	R_rn	L_trend_slope_GSE42639	L_dir	R_log2FC_IAV_vs_Mock	R_FDR	R_dir	trend_match	prob
+SS+CCC_relax	Cd209a	Cd209a	Ceacam1	Ceacam1	1	1	TRUE	CEACAM	Cell-Cell Contact	CD209A_CEACAM1	6.2247206263041	0.511277725710715	1.22290998662445	1.46469907970612	0.492514217184417	-0.494030772482081	down	-0.307808282932101	0.44298170116555	down	co_down	0.251720282910164

@@ -1,0 +1,61 @@
+=== Mo -> vagal 神经元区室 LR 通讯 v2 ===
+时间: 2026-05-01 02:49:34
+脚本: scripts/12_CellChat_neuron_compartment_LR.R
+
+配体源: GSE42639 Mo 严选 58 (results/Mo_protective/strict/core_targets_strict.tsv)
+受体源: GSE161878 (bulk vagal ganglia) 神经元区室池 (新)
+数据库: CellChatDB.mouse SS / SS+Cell-Cell-Contact
+
+参数:
+$K
+[1] 0.5
+
+$n_hill
+[1] 2
+
+$cpm_thresh
+[1] 1
+
+$sample_frac_min
+[1] 0.2
+
+$prob_high_thresh
+[1] 0.1
+
+
+=== 受体池构建 ===
+vagal 表达池 (CPM>1 在 >=5/21 样本): 14572
+∩ CellChatDB receptor: 302
+剔除经典+单细胞免疫黑名单 (2239): -82
+最终神经元相关受体池: 289
+神经元 marker 验证 (panel 38): 34 在表达池
+  含: Snap25, Stmn2, Stmn3, Map2, Tubb3, Nefl, Nefm, Nefh, Gap43, Syn1, Syp, Syt1, Rbfox3, Eno2, Uchl1, Mapt, Gpr151, Trpv1, Trpa1, Scn10a
+
+=== 配体 ===
+58 ∩ SS ligand:      2 -> Btla, Il16
+58 ∩ SS+CCC ligand:  3 -> Btla, Cd209a, Il16
+
+=== LR 配对结果 ===
+SS LR pairs (R 至少一亚基在神经元池): 0
+SS+CCC LR pairs:                      0
+
+=== 高可信通讯对 (prob>=0.10 + 趋势匹配) ===
+类别                         数
+SS co_down (L↓ R↓)         0
+SS mirror_up (L↓ R↑)       0
+SS+CCC co_down                 0
+SS+CCC mirror_up               0
+
+--- SS 全部 LR (按 prob 降序) ---
+
+--- SS+CCC 全部 LR (严判, 按 prob 降序) ---
+
+=== 放宽版 R 池 (仅经典免疫 marker 黑名单) ===
+放宽 SS LR pairs:     0
+放宽 SS+CCC LR pairs: 1
+
+--- SS+CCC LR (放宽) ---
+        annotation ligand_subunits receptor_subunits pathway_name      prob
+ Cell-Cell Contact          Cd209a           Ceacam1       CEACAM 0.2517203
+ R_log2FC_IAV_vs_Mock     R_FDR trend_match R_expr_vagus_IAV R_expr_vagus_Mock
+           -0.3078083 0.4429817     co_down          1.22291          1.464699

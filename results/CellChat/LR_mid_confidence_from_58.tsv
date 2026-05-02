@@ -1,0 +1,1 @@
+L_label	ligand_complex	ligand_subunits	receptor_complex	receptor_subunits	n_recep_subunits	n_up_subunits	all_subunits_up	any_subunit_up	r_dir_up	pathway_name	annotation	interaction_name	L_expr_Mo_TX91	L_rn	R_expr_vagus_IAV	R_rn	L_trend_slope	L_trend_FDR	L_func_class	R_max_log2FC	R_min_FDR	prob

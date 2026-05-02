@@ -1,0 +1,44 @@
+=== 模块 5: NTS 神经元亚群 4 维度排他性验证 ===
+时间: 2026-05-02 01:19:26
+脚本: scripts/17_module5_exclusivity.R
+
+=== 神经元亚群定义 (细胞级别) ===
+
+  Non_neuron Other_neuron Tac1+Vglut2+   Vgat+_GABA Vglut2+_only 
+        3784          853          212          835          784 
+
+=== 4 维度对比 ===
+  neuron_type n_cells FluSig_mean Targets58_mean CoughSig_mean LR_sum_prob
+ Other_neuron     853 -0.02811434    -0.01334225   -0.03363511    89.32887
+   Vgat+_GABA     835 -0.03782096    -0.02720584    0.14266844    87.40963
+ Tac1+Vglut2+     212 -0.04120356    -0.03821592    0.21208540    96.02801
+ Vglut2+_only     784 -0.03855333    -0.04005892    0.16231219    81.95005
+ Cx3cl1_Cx3cr1_prob
+          0.5307190
+          0.5894242
+          0.6022598
+          0.5930215
+
+=== 4 维度排名 (1 = 最高) ===
+  neuron_type rank_FluSig rank_Targets58 rank_CoughSig rank_LR_sum top_in_4D
+ Other_neuron           1              1             4           2         2
+   Vgat+_GABA           2              2             3           3         0
+ Tac1+Vglut2+           4              3             1           1         2
+ Vglut2+_only           3              4             2           4         0
+
+=== Wilcoxon Tac1+Vglut2+ vs 其它 (alternative='greater') ===
+     score           vs   Tac1_mean  other_mean      p_value     p_adj_BH
+    FluSig Vglut2+_only -0.04120356 -0.03855333 6.327717e-01 1.000000e+00
+ Targets58 Vglut2+_only -0.03821592 -0.04005892 8.799908e-02 1.979979e-01
+  CoughSig Vglut2+_only  0.21208540  0.16231219 7.479081e-09 2.243724e-08
+    FluSig   Vgat+_GABA -0.04120356 -0.03782096 9.995065e-01 1.000000e+00
+ Targets58   Vgat+_GABA -0.03821592 -0.02720584 9.999396e-01 1.000000e+00
+  CoughSig   Vgat+_GABA  0.21208540  0.14266844 4.237180e-16 1.906731e-15
+    FluSig Other_neuron -0.04120356 -0.02811434 1.000000e+00 1.000000e+00
+ Targets58 Other_neuron -0.03821592 -0.01334225 1.000000e+00 1.000000e+00
+  CoughSig Other_neuron  0.21208540 -0.03363511 1.826421e-65 1.643779e-64
+
+=== 排他性结论 ===
+Tac1+Vglut2+ 在 4 维度中排名第一的次数: 2 / 4
+其它亚群最高排名第一次数: 2
+>>> 排他性 [部分成立, 2/4]

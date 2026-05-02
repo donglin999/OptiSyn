@@ -1,0 +1,33 @@
+# OS / editor
+.DS_Store
+/.claude
+
+# Raw data (3.8GB, hosted on GEO / private)
+raw_data/
+
+# Intermediate processed data (regenerable from raw via scripts)
+processed_data/
+
+# Large R binary objects (regenerable, not git-friendly)
+# Keep .tsv/.csv/.png/.pdf in results/, exclude .rds
+*.rds
+
+# R workspace / history
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Logs / tmp
+*.log
+*.tmp
+/tmp/
+
+# Sensitive
+*.env
+.env

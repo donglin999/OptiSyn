@@ -1,0 +1,199 @@
+=== 模块 4: NTS Cx3cr1+ ↔ Tac1+Vglut2+ LR 互作 ===
+时间: 2026-05-02 00:35:19
+数据: GSE268741 模块 1 子集 (同一数据集, 无跨数据集问题)
+
+=== 子集 ===
+Tac1+Vglut2+ 神经元: 212 cells
+Cx3cr1+ 免疫:        215 cells
+
+=== 参数 ===
+$K
+[1] 0.5
+
+$n_hill
+[1] 2
+
+$prob_high
+[1] 0.1
+
+$min_pct_subset
+[1] 0.05
+
+
+LR 数据库: CellChatDB.mouse SS+CCC, 1587 pairs
+
+=== 双向 LR 通讯计算 ===
+[N->I] Tac1+ 神经元 -> Cx3cr1+ 免疫 : 227 LR pairs (高可信 227)
+[I->N] Cx3cr1+ 免疫 -> Tac1+ 神经元 : 135 LR pairs (高可信 135)
+
+=== Top 20 [N->I] (按 prob 降序) ===
+ ligand_complex receptor_complex pathway_name         annotation      prob
+            Ptn             Sdc4          PTN Secreted Signaling 0.6312871
+            Ptn              Ncl          PTN Secreted Signaling 0.6303757
+            App             Cd74          APP  Cell-Cell Contact 0.6232834
+          Cadm1            Cadm1         CADM  Cell-Cell Contact 0.6149697
+          Ncam1            Ncam1         NCAM  Cell-Cell Contact 0.6075714
+         Cx3cl1           Cx3cr1         CX3C Secreted Signaling 0.6022598
+            Mif       CD74_CXCR4          MIF Secreted Signaling 0.6014604
+            Ptn           Ptprz1          PTN Secreted Signaling 0.5965499
+            Ptn             Sdc3          PTN Secreted Signaling 0.5900989
+           Gas6            Mertk          GAS Secreted Signaling 0.5828867
+           Thy1      ITGAM_ITGB2         THY1  Cell-Cell Contact 0.5808588
+           Jam3             F11r          JAM  Cell-Cell Contact 0.5802627
+           Psap          Gpr37l1         PSAP Secreted Signaling 0.5783454
+           Jam3      ITGAM_ITGB2          JAM  Cell-Cell Contact 0.5724802
+         Sema4g           Plxnb2        SEMA4  Cell-Cell Contact 0.5668769
+           Bdnf            Ntrk2           NT Secreted Signaling 0.5614901
+            Mif        CD74_CD44          MIF Secreted Signaling 0.5582253
+          Cntn1            Nrcam         CNTN  Cell-Cell Contact 0.5569396
+            Mif            Ackr3          MIF Secreted Signaling 0.5505894
+            Ptn      ITGAV_ITGB3          PTN Secreted Signaling 0.5452898
+ L_pct_sender R_pct_receiver
+    0.9103774     0.76279070
+    0.9103774     0.89302326
+    0.9811321     0.46511628
+    0.9764151     0.49302326
+    1.0000000     0.30232558
+    0.6933962     1.00000000
+    0.9952830     0.23720930
+    0.9103774     0.18139535
+    0.9103774     0.31162791
+    0.7169811     0.65581395
+    0.5896226     0.49302326
+    0.6273585     0.83720930
+    0.9905660     0.13023256
+    0.6273585     0.49302326
+    0.6273585     0.68372093
+    0.6132075     0.21860465
+    0.9952830     0.07441860
+    0.9858491     0.13488372
+    0.9952830     0.14418605
+    0.9103774     0.09767442
+
+=== Top 20 [I->N] (按 prob 降序) ===
+ ligand_complex receptor_complex pathway_name         annotation      prob
+            Ptn              Ncl          PTN Secreted Signaling 0.6225782
+            Ptn             Sdc3          PTN Secreted Signaling 0.6155863
+          Cadm1            Cadm1         CADM  Cell-Cell Contact 0.6149697
+          Ncam1            Ncam1         NCAM  Cell-Cell Contact 0.6075714
+            Ptn           Ptprz1          PTN Secreted Signaling 0.6048147
+          Ncam1            L1cam         NCAM  Cell-Cell Contact 0.5932173
+            Ptn             Sdc2          PTN Secreted Signaling 0.5855338
+          Ncam1            Ncam2         NCAM  Cell-Cell Contact 0.5834348
+           Psap          Gpr37l1         PSAP Secreted Signaling 0.5815038
+           F11r             Jam3          JAM  Cell-Cell Contact 0.5802627
+          Pdgfb           Pdgfra         PDGF Secreted Signaling 0.5738755
+            Mdk              Ncl           MK Secreted Signaling 0.5684537
+           Igf1            Igf1r          IGF Secreted Signaling 0.5631036
+          Nrxn1            Nlgn3         NRXN  Cell-Cell Contact 0.5615712
+          Nrxn1            Nlgn2         NRXN  Cell-Cell Contact 0.5590372
+          Nrxn1            Nlgn1         NRXN  Cell-Cell Contact 0.5564792
+            Mdk           Ptprz1           MK Secreted Signaling 0.5522345
+            Mdk             Lrp1           MK Secreted Signaling 0.5520770
+          Nrxn2            Nlgn3         NRXN  Cell-Cell Contact 0.5431560
+           Ccl2            Ackr1          CCL Secreted Signaling 0.5427251
+ L_pct_sender R_pct_receiver
+    0.4790698      0.9764151
+    0.4790698      0.9386792
+    0.4930233      0.9764151
+    0.3023256      1.0000000
+    0.4790698      0.5377358
+    0.3023256      0.8773585
+    0.4790698      0.6650943
+    0.3023256      0.7877358
+    0.9767442      0.2358491
+    0.8372093      0.6273585
+    0.6232558      0.1981132
+    0.1534884      0.9764151
+    0.3627907      0.5990566
+    0.2046512      0.8349057
+    0.2046512      0.8160377
+    0.2046512      0.7830189
+    0.1534884      0.5377358
+    0.1534884      0.8584906
+    0.1953488      0.8349057
+    0.6558140      0.4433962
+
+=== 关键 LR 检验 ===
+[N->I] Cx3cl1 -> Cx3cr1: prob=0.602, L_pct=0.69, R_pct=1.00
+[N->I] Tac1 -> Tacr1: NOT in pool
+[I->N] Tnf -> Tnfrsf1a: prob=0.390, L_pct=0.77, R_pct=0.07
+[I->N] Tnf -> Tnfrsf1b: NOT in pool
+[I->N] Il6 -> Il6ra: NOT in pool
+[I->N] Il1b -> Il1r1: NOT in pool
+[I->N] Ifng -> Ifngr1: NOT in pool
+[I->N] Cxcl10 -> Cxcr3: NOT in pool
+[I->N] Ccl2 -> Ccr2: NOT in pool
+[I->N] Apoe -> Trem2: NOT in pool
+
+=== 流感相关炎症 LR ===
+N->I (神经元->免疫): 13
+ ligand_complex receptor_complex pathway_name      prob L_pct_sender
+          Tgfb2        TGFbR1_R2         TGFb 0.4924563   0.25943396
+          Tgfb2      ACVR1_TGFbR         TGFb 0.4772709   0.25943396
+        Tnfsf12        Tnfrsf12a        TWEAK 0.4725338   0.34905660
+          Tgfb2    ACVR1B_TGFbR2         TGFb 0.4465243   0.25943396
+           Csf1            Csf1r          CSF 0.4087805   0.11792453
+           Ccl4             Ccr5          CCL 0.3869925   0.08018868
+           Ccl3             Ccr5          CCL 0.3609502   0.06132075
+             C3            C3ar1   COMPLEMENT 0.3444963   0.06603774
+           Il34            Csf1r          CSF 0.3416781   0.06603774
+             C3      ITGAM_ITGB2   COMPLEMENT 0.3397264   0.06603774
+           Il11  IL11R complex 1          IL6 0.3222518   0.05660377
+           Ccl3             Ccr1          CCL 0.3214354   0.06132075
+             C3      ITGAX_ITGB2   COMPLEMENT 0.3074042   0.06603774
+ R_pct_receiver
+     0.61860465
+     0.20930233
+     0.23255814
+     0.09767442
+     0.92558140
+     0.71162791
+     0.71162791
+     0.82325581
+     0.92558140
+     0.49302326
+     0.42325581
+     0.12558140
+     0.07906977
+
+I->N (免疫->神经元): 7
+ ligand_complex receptor_complex pathway_name      prob L_pct_sender
+           Ccl2            Ackr1          CCL 0.5427251   0.65581395
+          Cxcl2            Ackr1         CXCL 0.5410184   0.47906977
+           Ccl7            Ackr1          CCL 0.5357847   0.32558140
+         Cxcl10            Ackr1         CXCL 0.5342450   0.38139535
+          Cxcl1            Ackr1         CXCL 0.4598299   0.06976744
+            Tnf         Tnfrsf1a          TNF 0.3898195   0.76744186
+        Tnfsf12        Tnfrsf12a        TWEAK 0.3145329   0.20465116
+ R_pct_receiver
+     0.44339623
+     0.44339623
+     0.44339623
+     0.44339623
+     0.44339623
+     0.07075472
+     0.06132075
+
+=== 通路强度量化 (Top 20 sum_prob) ===
+ direction pathway n_LR  max_prob  sum_prob
+      N->I     WNT   32 0.4624339 12.225312
+      N->I   SEMA3   27 0.4512053 10.006136
+      I->N    EPHB   13 0.4953308  5.450012
+      I->N    NRXN    9 0.5615712  4.902856
+      I->N   SEMA4   10 0.5401844  4.746760
+      N->I   NOTCH   10 0.5405441  4.715385
+      N->I   SEMA4   10 0.5668769  4.710583
+      N->I     JAM    8 0.5802627  3.791634
+      I->N     JAM    8 0.5802627  3.721585
+      N->I      MK    7 0.5339284  3.518225
+      N->I     PTN    6 0.6312871  3.490493
+      I->N      MK    7 0.5684537  3.399272
+      N->I     BMP    9 0.4060917  3.361058
+      I->N     PTN    6 0.6225782  3.241958
+      N->I    NRXN    6 0.5150030  3.029292
+      N->I    EPHA    6 0.5301273  3.008246
+      I->N    NCAM    5 0.6075714  2.797014
+      N->I   ncWNT    8 0.3595491  2.600283
+      N->I    NCAM    5 0.6075714  2.574371
+      N->I    SPP1    7 0.3745258  2.420589

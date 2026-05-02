@@ -1,0 +1,95 @@
+=== 严选参数记录 ===
+时间戳: 2026-04-30 15:57:35
+脚本: scripts/06_GSE42639_Mo_protective_strict.R
+
+Step A 阈值:
+$log2fc_0p6
+[1] -0.3
+
+$log2fc_10
+[1] -0.585
+
+$fdr
+[1] 0.05
+
+
+Step B 白名单 GO (保留, 命中即留):
+$ImmuneReg
+[1] "GO:0002376" "GO:0050776" "GO:0002682" "GO:0045088" "GO:0002683"
+[6] "GO:0050778"
+
+$InflammReg
+[1] "GO:0006954" "GO:0050727" "GO:0050728" "GO:0050729" "GO:0001818"
+[6] "GO:0001819" "GO:0001817"
+
+$SignalTransduction
+[1] "GO:0007165" "GO:0023052" "GO:0009966" "GO:0035556"
+
+$CellCommunication
+[1] "GO:0007154" "GO:0010646" "GO:0007267"
+
+$Secreted
+[1] "GO:0005576" "GO:0005615" "GO:0005125" "GO:0048018"
+
+$Membrane
+[1] "GO:0005886" "GO:0009986" "GO:0038023" "GO:0004888" "GO:0005887"
+
+$TFReg
+[1] "GO:0003700" "GO:0140110" "GO:0006355" "GO:0006357"
+
+
+Step B 黑名单 GO (剔, 仅当未命中白名单):
+$Ribosome
+[1] "GO:0003735" "GO:0005840" "GO:0022626" "GO:0006412"
+
+$MitoStructure
+[1] "GO:0006119" "GO:0042775" "GO:0008137" "GO:0098798" "GO:0005747"
+[6] "GO:0005746"
+
+$CytoskeletalStructure
+[1] "GO:0005200" "GO:0005198"
+
+$CarbMetabolism
+[1] "GO:0006096" "GO:0006094" "GO:0005975" "GO:0006006"
+
+$LipidMetabolism
+[1] "GO:0006631" "GO:0008610" "GO:0006629" "GO:0019216"
+
+$AAMetabolism
+[1] "GO:0006520" "GO:0009063" "GO:0008652"
+
+
+=== sessionInfo ===
+R version 4.6.0 (2026-04-24)
+Platform: aarch64-apple-darwin25.4.0
+Running under: macOS Tahoe 26.4.1
+
+Matrix products: default
+BLAS:   /opt/homebrew/Cellar/openblas/0.3.33/lib/libopenblasp-r0.3.33.dylib 
+LAPACK: /opt/homebrew/Cellar/r/4.6.0/lib/R/lib/libRlapack.dylib;  LAPACK version 3.12.1
+
+locale:
+[1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8
+
+time zone: Asia/Shanghai
+tzcode source: internal
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] org.Mm.eg.db_3.23.0  AnnotationDbi_1.73.1 IRanges_2.45.0      
+ [4] S4Vectors_0.49.3     Biobase_2.71.0       BiocGenerics_0.57.1 
+ [7] generics_0.1.4       RColorBrewer_1.1-3   ggplot2_4.0.3       
+[10] limma_3.67.3        
+
+loaded via a namespace (and not attached):
+ [1] crayon_1.5.3      vctrs_0.7.3       httr_1.4.8        cli_3.6.6        
+ [5] rlang_1.2.0       DBI_1.3.0         png_0.1-9         S7_0.2.2         
+ [9] labeling_0.4.3    glue_1.8.1        bit_4.6.0         statmod_1.5.1    
+[13] Biostrings_2.79.5 KEGGREST_1.51.1   scales_1.4.0      Seqinfo_1.1.0    
+[17] grid_4.6.0        fastmap_1.2.0     lifecycle_1.0.5   memoise_2.0.1    
+[21] compiler_4.6.0    RSQLite_2.4.6     blob_1.3.0        pkgconfig_2.0.3  
+[25] XVector_0.51.0    farver_2.1.2      R6_2.6.1          tools_4.6.0      
+[29] withr_3.0.2       bit64_4.8.0       gtable_0.3.6      cachem_1.1.0     

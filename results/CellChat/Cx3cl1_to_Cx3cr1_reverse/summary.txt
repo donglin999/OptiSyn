@@ -1,0 +1,108 @@
+=== Cx3cl1 -> Cx3cr1 反向 LR 验证 ===
+时间: 2026-05-01 22:39:47
+脚本: scripts/13_Cx3cl1_to_Cx3cr1_reverse_LR.R
+
+===== [A] Cx3cl1 在 GSE161878 迷走神经表达 =====
+  CPM 范围 2.52 - 8.49, n=21/21 样本 CPM>1
+  Mock log2CPM mean: 2.455  ; IAV log2CPM mean: 2.358
+  在 vagal 表达池: TRUE
+  DESeq2 IAV vs Mock: log2FC=-0.104, FDR=0.686, baseMean=52.3
+
+===== [B] Cx3cr1 在 Mo 细胞表达 =====
+  GSE42639 Mo 五组 log2 mean:
+          group log2_mean
+Sham       Sham 10.355329
+TX91       TX91  9.880361
+PR8_0p6 PR8_0p6  8.151674
+PR8_10   PR8_10  7.331510
+PR8_100 PR8_100  7.500200
+
+  Mo 严选 strict 表:
+ gene_symbol trend_slope   trend_FDR log2FC_100_vs_TX91 FDR_100_vs_TX91
+      Cx3cr1  -0.7960648 0.001091904          -2.380161    1.021207e-05
+                                                         func_class
+ ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Membrane
+
+  GSE296065 单细胞 Target vs Background:
+ gene_symbol avg_log2FC_target_vs_bg p_val_adj pct_target pct_bg
+      Cx3cr1                2.623855         0      0.464  0.105
+
+===== [C] Hill 结合概率 =====
+  L (vagus Cx3cl1 IAV mean log2CPM=2.358, rn=0.576, Hill=0.570)
+  R (Mo Cx3cr1 TX91 log2 mean=9.880, rn=0.862, Hill=0.748)
+  P_LR = 0.426  (对比 Cd209a-Ceacam1 v2 = 0.252)
+
+===== [D] 趋势匹配 =====
+  L (Cx3cl1) vagus IAV vs Mock log2FC=-0.104, FDR=0.686 -> 下调
+  R (Cx3cr1) Mo TX91->PR8_100 slope=-0.796, FDR=0.00109 -> 重症崩塌 (slope<0)
+  模式: 信号源稳定/上调 + 接收端崩塌  -> RECEIVER_LOSS (受体丢失主导)
+
+===== [E] Cx3cr1 下游通路在 Mo 严选 58 中的命中 =====
+  Chemotaxis         n=7 -> Cx3cr1, Cd177, Cd209a, Rnase2b, Dock8, Il16, Rin3
+  AntiInflammation   n=4 -> Cx3cr1, Abcd2, Arrb1, Klf2
+  Homeostasis        n=9 -> Cx3cr1, Nfe2, Arrb1, Klf2, Mbp, Insr, Tmc6, Ampd3, Dusp18
+
+详细 hit 表 (含趋势):
+ gene_symbol          pathway trend_slope_GSE42639 trend_FDR_GSE42639
+      Cx3cr1       Chemotaxis           -0.7960648       0.0010919041
+       Cd177       Chemotaxis           -0.7138074       0.0042132085
+      Cd209a       Chemotaxis           -0.4940308       0.0023806023
+     Rnase2b       Chemotaxis           -0.4936765       0.0066964880
+       Dock8       Chemotaxis           -0.3157319       0.0042553516
+        Il16       Chemotaxis           -0.2447589       0.0092071758
+        Rin3       Chemotaxis           -0.2390799       0.0800772619
+      Cx3cr1 AntiInflammation           -0.7960648       0.0010919041
+       Abcd2 AntiInflammation           -0.7416653       0.0003685254
+       Arrb1 AntiInflammation           -0.6659184       0.0005610674
+        Klf2 AntiInflammation           -0.6324567       0.0008417408
+      Cx3cr1      Homeostasis           -0.7960648       0.0010919041
+        Nfe2      Homeostasis           -0.7693372       0.0015292508
+       Arrb1      Homeostasis           -0.6659184       0.0005610674
+        Klf2      Homeostasis           -0.6324567       0.0008417408
+         Mbp      Homeostasis           -0.6233044       0.0001039640
+        Insr      Homeostasis           -0.6230225       0.0001091944
+        Tmc6      Homeostasis           -0.5118193       0.0087831921
+       Ampd3      Homeostasis           -0.4850236       0.0016299061
+      Dusp18      Homeostasis           -0.3551914       0.0247017301
+ log2FC_100_vs_TX91 FDR_100_vs_TX91
+         -2.3801615    1.021207e-05
+         -2.5675328    8.814498e-06
+         -1.6925971    1.067535e-04
+         -1.6361905    4.758308e-04
+         -1.0672532    9.423693e-05
+         -0.8138330    5.932663e-04
+         -0.7313606    1.481124e-02
+         -2.3801615    1.021207e-05
+         -2.4121535    8.132301e-06
+         -2.1068480    2.635662e-05
+         -2.1017599    1.602568e-05
+         -2.3801615    1.021207e-05
+         -2.7211866    2.034025e-06
+         -2.1068480    2.635662e-05
+         -2.1017599    1.602568e-05
+         -1.9012433    4.383837e-06
+         -1.9520833    3.293457e-06
+         -1.7543997    3.495117e-04
+         -1.6370919    4.981673e-05
+         -1.1370328    2.057171e-03
+                                                                  func_class
+          ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Membrane
+                     ImmuneReg;SignalTransduction;CellCommunication;Membrane
+                                                          ImmuneReg;Membrane
+                                                          ImmuneReg;Secreted
+                     ImmuneReg;SignalTransduction;CellCommunication;Membrane
+ ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Secreted;Membrane
+                              ImmuneReg;SignalTransduction;CellCommunication
+          ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Membrane
+                                                                  InflammReg
+              InflammReg;SignalTransduction;CellCommunication;Membrane;TFReg
+             ImmuneReg;InflammReg;SignalTransduction;CellCommunication;TFReg
+          ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Membrane
+                                  SignalTransduction;CellCommunication;TFReg
+              InflammReg;SignalTransduction;CellCommunication;Membrane;TFReg
+             ImmuneReg;InflammReg;SignalTransduction;CellCommunication;TFReg
+                    InflammReg;SignalTransduction;CellCommunication;Membrane
+                         SignalTransduction;CellCommunication;Membrane;TFReg
+                                                                    Membrane
+                                                                   ImmuneReg
+                                                                            

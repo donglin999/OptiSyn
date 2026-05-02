@@ -1,0 +1,54 @@
+=== Mo -> vagal sensory ganglia LR 通讯 (CellChat 风格) ===
+时间: 2026-04-30 20:22:21
+脚本: scripts/10_CellChat_Mo_to_vagus.R
+
+配体源: GSE42639 Mo 严选 58 (Mo_protective/strict/core_targets_strict.tsv)
+受体源: GSE161878 主分析 (剔 D-suffix) 上调 DEG 143 (|log2FC|>=0.585 & FDR<0.05)
+数据库: CellChatDB.mouse  SS=1209, SS+CCC=1587 (LR pairs)
+
+参数:
+$K
+[1] 0.5
+
+$n_hill
+[1] 2
+
+$complex_combine
+[1] "geometric_mean"
+
+$prob_high_thresh
+[1] 0.1
+
+
+=== 58 候选 (sender), Secreted Signaling 严判 ============
+LR pair (R 在迷走神经检测到):       2
+  其中 R 全亚基显著上调 (FDR<0.05):  0
+  其中 R 任一亚基显著上调:           0
+  其中 R 表达方向上调 (log2FC>0):    0
+高可信 (全亚基上调 + prob>=0.10):    0
+中可信 (任一上调或方向上调 + prob):   0
+
+--- 58 SS 全部 LR (按 prob 降序) ---
+ ligand_subunits receptor_subunits pathway_name      prob all_subunits_up
+            Il16               Cd4         IL16 0.2129770           FALSE
+            Btla          Tnfrsf14         BTLA 0.1598953           FALSE
+ any_subunit_up r_dir_up R_max_log2FC R_min_FDR L_trend_slope
+          FALSE    FALSE           NA        NA    -0.2447589
+          FALSE    FALSE           NA        NA    -0.5339173
+                                                                L_func_class
+ ImmuneReg;InflammReg;SignalTransduction;CellCommunication;Secreted;Membrane
+                     ImmuneReg;SignalTransduction;CellCommunication;Membrane
+
+=== 58 候选 (sender), 放宽: + Cell-Cell Contact ==========
+LR pair: 3 (其中 R 显著上调全亚基: 0)
+         annotation ligand_subunits receptor_subunits pathway_name      prob
+  Cell-Cell Contact          Cd209a           Ceacam1       CEACAM 0.2496854
+ Secreted Signaling            Il16               Cd4         IL16 0.2129770
+ Secreted Signaling            Btla          Tnfrsf14         BTLA 0.1598953
+ all_subunits_up any_subunit_up r_dir_up R_max_log2FC R_min_FDR
+           FALSE          FALSE    FALSE   -0.3078083 0.4429817
+           FALSE          FALSE    FALSE           NA        NA
+           FALSE          FALSE    FALSE           NA        NA
+
+=== 4 双标 (sender) ======================================
+SS LR: 0   ;   SS+CCC LR: 0

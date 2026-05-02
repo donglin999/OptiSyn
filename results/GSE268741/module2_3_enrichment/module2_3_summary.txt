@@ -1,0 +1,140 @@
+=== 模块 2/3: Tac1+ 流感富集 + 跨数据集通路一致性 ===
+时间: 2026-05-02 01:22:16
+脚本: scripts/18_module2_3_enrichment.R
+
+=== 模块 2 ===
+Tac1+Vglut2+ vs Other_neuron FindMarkers (Wilcoxon):
+  上 506 / 下 310 (log2FC>0.5 & BH<0.05)
+
+  Top 20 Tac1+ marker_up:
+ gene_symbol avg_log2FC  p_val_adj_BH pct_Tac1 pct_OtherNeu
+        Tac1   5.235009 3.785461e-155    1.000        0.161
+         Nmu   2.758650  3.293036e-06    0.127        0.047
+    Arhgap36   2.575230  8.654368e-10    0.165        0.053
+       Qrfpr   2.386174  1.714890e-14    0.123        0.022
+        Dlk1   2.379658  7.611751e-24    0.302        0.080
+     Gm56652   2.217783  7.528701e-13    0.132        0.028
+        Tlx3   1.829350  3.913988e-42    0.627        0.196
+     Gm20063   1.794868  2.549805e-06    0.108        0.036
+       Cbln2   1.788254  6.559257e-14    0.575        0.365
+         Nts   1.784707  9.791961e-06    0.175        0.080
+     Gm33293   1.664283  8.014008e-20    0.330        0.102
+      Pou4f1   1.662723  3.522930e-05    0.113        0.043
+     Vmn1r85   1.655949  5.319592e-06    0.104        0.034
+       Calb2   1.649077  3.922161e-09    0.585        0.374
+     Aldh3b2   1.636535  1.416654e-04    0.175        0.089
+       Cbln1   1.630576  5.013373e-19    0.458        0.193
+       Tacr1   1.623299  1.812728e-05    0.108        0.039
+       Shox2   1.590487  8.194564e-10    0.245        0.097
+       Htr2c   1.490406  2.140793e-14    0.255        0.081
+        Nrn1   1.489344  1.062589e-41    0.807        0.352
+
+  GO 富集 (Tac1+ marker_up, BP):
+                                                                      Term DE
+                                            neuropeptide signaling pathway 21
+                                                          feeding behavior 22
+                                                       cell-cell signaling 90
+                              G protein-coupled receptor signaling pathway 55
+                                                        synaptic signaling 71
+                                                  trans-synaptic signaling 68
+                                            chemical synaptic transmission 67
+                                      anterograde trans-synaptic signaling 67
+ adenylate cyclase-modulating G protein-coupled receptor signaling pathway 27
+                                                                  behavior 61
+                         regulation of cytosolic calcium ion concentration 14
+   phospholipase C-activating G protein-coupled receptor signaling pathway 17
+                                                    regulation of behavior 16
+                                                    nervous system process 68
+                                                           amine transport 16
+                                          synaptic transmission, GABAergic 12
+                                  positive regulation of secretion by cell 27
+                              modulation of chemical synaptic transmission 47
+                                    regulation of trans-synaptic signaling 47
+                                          positive regulation of secretion 27
+   N     ratio         P.DE          FDR
+  38 0.5526316 5.707788e-11 8.997757e-07
+  45 0.4888889 4.623042e-10 3.643882e-06
+ 430 0.2093023 1.925674e-09 1.011878e-05
+ 216 0.2546296 3.591554e-09 1.132345e-05
+ 318 0.2232704 7.934681e-09 2.084705e-05
+ 302 0.2251656 1.194635e-08 2.138970e-05
+ 299 0.2240803 1.912873e-08 2.741321e-05
+ 299 0.2240803 1.912873e-08 2.741321e-05
+  77 0.3506494 3.905829e-08 5.130957e-05
+ 269 0.2267658 5.649089e-08 6.408283e-05
+  25 0.5600000 8.109405e-08 7.989791e-05
+  41 0.4146341 9.077101e-07 7.154571e-04
+  38 0.4210526 1.494511e-06 1.024325e-03
+ 345 0.1971014 2.654056e-06 1.609175e-03
+  42 0.3809524 7.190998e-06 3.778630e-03
+  26 0.4615385 1.009930e-05 4.682512e-03
+ 101 0.2673267 1.592789e-05 6.088928e-03
+ 224 0.2098214 2.021608e-05 6.927964e-03
+ 224 0.2098214 2.021608e-05 6.927964e-03
+ 104 0.2596154 2.835857e-05 8.765579e-03
+
+  Focus 通路 (cough/immune/sensory/glu/synap):
+                                                          Term DE   N     ratio
+                                            synaptic signaling 71 318 0.2232704
+                                      trans-synaptic signaling 68 302 0.2251656
+                                chemical synaptic transmission 67 299 0.2240803
+                          anterograde trans-synaptic signaling 67 299 0.2240803
+                              synaptic transmission, GABAergic 12  26 0.4615385
+                  modulation of chemical synaptic transmission 47 224 0.2098214
+                        regulation of trans-synaptic signaling 47 224 0.2098214
+ regulation of presynaptic cytosolic calcium ion concentration  6   8 0.7500000
+                regulation of synaptic transmission, GABAergic  9  18 0.5000000
+                                   neuron cellular homeostasis 10  22 0.4545455
+                                              synapse assembly 26 103 0.2524272
+                    sensory perception of temperature stimulus  6  11 0.5454545
+                 regulation of postsynaptic membrane potential 17  64 0.2656250
+      presynaptic modulation of chemical synaptic transmission  8  19 0.4210526
+                                    sensory perception of pain 12  38 0.3157895
+       positive regulation of synaptic transmission, GABAergic  3   3 1.0000000
+                                          synapse organization 42 233 0.1802575
+                         vesicle-mediated transport in synapse 22 104 0.2115385
+                            synaptic transmission, cholinergic  5  10 0.5000000
+                  chemical synaptic transmission, postsynaptic 13  50 0.2600000
+         P.DE          FDR
+ 7.934681e-09 2.084705e-05
+ 1.194635e-08 2.138970e-05
+ 1.912873e-08 2.741321e-05
+ 1.912873e-08 2.741321e-05
+ 1.009930e-05 4.682512e-03
+ 2.021608e-05 6.927964e-03
+ 2.021608e-05 6.927964e-03
+ 5.184903e-05 1.412483e-02
+ 6.201964e-05 1.602750e-02
+ 6.706787e-05 1.679950e-02
+ 6.713832e-05 1.679950e-02
+ 6.298232e-04 9.366540e-02
+ 6.513569e-04 9.596253e-02
+ 6.966118e-04 1.007467e-01
+ 7.700006e-04 1.075355e-01
+ 1.520308e-03 1.653949e-01
+ 1.703603e-03 1.802390e-01
+ 3.047049e-03 2.866733e-01
+ 3.054374e-03 2.866733e-01
+ 3.396410e-03 3.149471e-01
+
+  GSE161878 上调 DEG 在 Tac1+ marker 中 hypergeometric:
+    universe=3959, flu_up=12, Tac1_up=411, 交=1, p=0.732
+    重叠基因: Lck
+
+=== 模块 3 ===
+GSE161878 vagal up GO BP 富集 (FDR<0.10): 654
+Tac1+ marker_up GO BP 富集 (FDR<0.10): 58
+共享通路: 4 (vagus only 650, Tac1+ only 54)
+
+Top 20 共享通路:
+      GO_id                    Term Ont   FDR_vagus   FDR_Tac1 DE_vagus DE_Tac1
+ GO:0051046 regulation of secretion  BP 0.052200197 0.03472328       14      43
+ GO:0032940       secretion by cell  BP 0.024971991 0.05527616       18      52
+ GO:0140352        export from cell  BP 0.055601951 0.04904884       18      56
+ GO:0046903               secretion  BP 0.002460115 0.06867428       22      55
+
+跨组织信号分子清单 (vagus up ∩ Tac1+ marker_up): 1 基因
+ gene_symbol vagus_log2FC  vagus_FDR Tac1_avg_log2FC Tac1_p_adj_BH Tac1_pct
+         Lck     0.707822 0.02922427       0.8087265   0.005075523    0.146
+ Other_pct
+     0.082
