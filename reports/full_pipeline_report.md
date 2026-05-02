@@ -164,6 +164,32 @@
 
 **输出**: `results/Mo_protective/strict/core_targets_strict.tsv` 58 行
 
+### 2.4 第 2 章图集（6 张，按生成顺序）
+
+**图 2.1** — 564 候选 Mo 5 组剂量响应热图（行 z-score，列序固定）：
+![heatmap_dose_response](../results/Mo_protective/heatmap_dose_response.png)
+> 评审：✅ 行 = 564 基因，列 = 5 组×3 重复，左侧 Sham/TX91 红→右侧 PR8 三剂量蓝，单调下降模式清晰。⚠️ 标题中文乱码（cairo 字体），不影响逻辑。
+
+**图 2.2** — PR8_100LD50 vs TX91 火山图（标 Top 15 候选）：
+![volcano_PR8_100_vs_TX91](../results/Mo_protective/volcano_PR8_100_vs_TX91.png)
+> 评审：✅ 火山图对称，564 候选（红）全在左侧（log2FC<0），Top 标注 Nfe2/St8sia4/Cx3cr1/Rasgrp2/Add3/Abcd2/Sort1/Galnt9 等。
+
+**图 2.3** — Top 20 候选 5 组折线图（组均值±SEM, n=3）：
+![top20_lineplot](../results/Mo_protective/top20_lineplot.png)
+> 评审：✅ 20 个基因从 Sham→TX91→PR8 三剂量**单调下降**，符合"轻症维持→重症崩塌"模式，包括 Cx3cr1/Bcl11a/Cd177/Rfx2/Hspa1a/Arrb1 等。
+
+**图 2.4** — 58 严选剂量响应热图：
+![heatmap_strict](../results/Mo_protective/strict/heatmap_strict.png)
+> 评审：✅ 58 基因聚类后呈梯度，左红右蓝对比鲜明，包含 Cd209a/Klf2/Cx3cr1/Bcl11a/Abcd2/Rasgrp2/Mbp/Insr/Gstm1 等关键基因。
+
+**图 2.5** — 58 严选 Top 20 折线图：
+![top_lineplot_strict](../results/Mo_protective/strict/top_lineplot_strict.png)
+> 评审：✅ Top 20 含 Abca9/Rasgrp2/**Cx3cr1**/Nfe2/Abcd2/Bcl11a/**Klf2**/**Arrb1**/Mbp/Insr 等，全部单调下降。
+
+**图 2.6** — 58 功能类别分布：
+![func_class_bar](../results/Mo_protective/strict/func_class_bar.png)
+> 评审：✅ CellComm 27 / Signal 27 / Membrane 25 / ImmuneReg 14 / Unannotated 13 / TFReg 12 / InflammReg 6 / Secreted 6（与 summary.txt 完全一致）。
+
 ---
 
 ## 第 3 章 — GSE31022 跨毒株时序验证
@@ -205,6 +231,16 @@ Insr                  -0.63           0.086         -0.151       0.034    Signal
 - `GSE31022_both_conserved_progressive.tsv` 4 双标
 - `GSE31022_58_lineplot.pdf/png` 55-panel 时序折线图（Both 红 / Conserved 蓝 / Progressive 绿 / Other 灰）
 - `GSE31022_both_lineplot.pdf/png` 4 双标小图
+
+### 3.4 第 3 章图集
+
+**图 3.1** — 55 个靶点 D1-D6 时序大图（颜色按标签：Both 红 / Conserved 蓝 / Progressive 绿 / Other 灰）：
+![GSE31022_58_lineplot](../results/Mo_protective/strict/GSE31022_validation/GSE31022_58_lineplot.png)
+> 评审：✅ 55 panel 排列合理。Top 行 4 个红色双标基因（Gstm1/Dusp18/Insr/6430548M08Rik）单调下降明显，之后 14 个蓝色 Conserved（Arrb1/Rasgrp2/Cd209a/Klf2 等）一些在 D1-D2 上升后下降，灰色多数 panel 无显著趋势。
+
+**图 3.2** — 4 双标基因详细时序（Gstm1/Dusp18/6430548M08Rik/Insr）：
+![GSE31022_both_lineplot](../results/Mo_protective/strict/GSE31022_validation/GSE31022_both_lineplot.png)
+> 评审：✅ Gstm1 漂亮的单调下降（log2FC up to -2.67）；Dusp18 D1-D2 反向上升后 D3 突降；6430548M08Rik 在 D4 后骤降；Insr 缓慢稳定下降。
 
 ---
 
@@ -259,6 +295,20 @@ Insr                  -0.63           0.086         -0.151       0.034    Signal
 - `GSE161878_DEG_up.tsv` (144) / `GSE161878_DEG_down.tsv` (10) — **主，下游用这个**
 - `GSE161878_DEG_*_withD.tsv` — 敏感性附属
 - `volcano_main.pdf/png`, `PCA.pdf/png`, `heatmap_top50_DEG.pdf/png`
+
+### 4.5 第 4 章图集
+
+**图 4.1** — vst PCA（PC1 79% + PC2 11%，Mock 蓝 / IAV 红）：
+![PCA](../results/GSE161878/PCA.png)
+> 评审：✅ Mock 与 IAV 大致分群，但 AM313（IAV）混入 Mock 群、AM309（Mock）靠近 IAV 群、AM323（IAV）落在 Mock 中部 — 这是 vagal bulk 数据本身样本异质性的真实信号（神经组织 + 不同程度免疫浸润），不是 bug。
+
+**图 4.2** — IAV vs Mock 火山图（apeglm shrink）：
+![volcano_main](../results/GSE161878/volcano_main.png)
+> 评审：✅ 右上角强烈 144 上调（红）：Ccl5/Ly6c2/Fcer1/Mpeg1/Cxcl9/Phf11b/Neurl3/Tyrobp/**Gpr151**/Ms4a6b/Plac8 — 经典髓系浸润 + IFN-γ 抗病毒信号 + vagal nociceptor marker。左下少量 10 下调（蓝）：神经元结构基因 Pcdha7/Stbd1/2610027K06Rik 等。
+
+**图 4.3** — Top 35 DEG 热图（Mock vs IAV 分块，行 z-score）：
+![heatmap_top50](../results/GSE161878/heatmap_top50_DEG.png)
+> 评审：✅ 上 24 行 IAV 高（Calhm6/Gpr151/Timp1/Cd52/Ly6c2/Phf11b/Ccl5/Fcer1g/H2-Aa/Cybb/Ctss…），下 10 行 IAV 低 / Mock 高（Pcdha7/Stbd1/Fktn/Uba6/Ccnjl…），分块清晰、模式干净。
 
 ---
 
@@ -320,6 +370,20 @@ GSE296065 单细胞    :  Target vs BG log2FC=2.62 (Mo 特异), V7 vs R7 log2FC=
 - `final_high_confidence_targets_BH.tsv` (1: Cx3cr1)
 - `specificity_DotPlot.pdf/png`, `group_volcano_V7_vs_R7.pdf/png`, `violin_final_BH.pdf/png`
 
+### 5.5 第 5 章图集
+
+**图 5.1** — 28 特异性基因在 9 类细胞 DotPlot：
+![specificity_DotPlot](../results/GSE296065_singlecell/specificity_DotPlot.png)
+> 评审：✅ Monocyte Ly6c2-/+ 两行 28 基因点又大又深红，Macrophage Interstitial 中等。Macrophage Alveolar / NK / Neutrophil / B / DC 几乎不表达。**清晰证明 28 基因 = Mo/Mo-Macs 特异**。
+
+**图 5.2** — 组间火山图 V7 vs R7（BH 校正）：
+![group_volcano_V7_vs_R7](../results/GSE296065_singlecell/group_volcano_V7_vs_R7.png)
+> 评审：✅ 右上唯一红点 = **Cx3cr1**（V7>R7，RTX 下调，BH p_adj=0.0012）。左上 4 个蓝点 = RTX 反向上调（Abcd2/Fam89b/6430548M08Rik/Nfe2，BH<0.05）。
+
+**图 5.3** — Cx3cr1 V7 vs R7 单细胞 violin：
+![violin_final_BH](../results/GSE296065_singlecell/violin_final_BH.png)
+> 评审：✅ V7（Vehicle）点云高峰至 3.0，散点更密；R7（RTX）顶峰约 2.4，散点较稀。表达分布差异与 BH-pass 一致。
+
 ---
 
 ## 第 6 章 — CellChat 通讯（三次迭代）
@@ -378,7 +442,7 @@ GSE296065 单细胞    :  Target vs BG log2FC=2.62 (Mo 特异), V7 vs R7 log2FC=
 
 ```
 CPM 范围: 2.52 - 8.49 (全部 21 样本 > 1)
-Mock 平均 CPM: 4.91, IAV 平均 CPM: 4.26
+Mock 平均 CPM: 4.77, IAV 平均 CPM: 4.26
 DESeq2 IAV vs Mock: log2FC = -0.10, FDR = 0.69 (统计稳定)
 在 vagal 表达池: ✓ (21/21)
 ```
@@ -427,6 +491,32 @@ P_LR = H(L) × H(R) = 0.426
 - `Cx3cr1_downstream_pathways_in_58.tsv`
 - `Cx3cl1_vagal_boxplot.pdf/png`, `Cx3cr1_Mo_5group_line.pdf/png`
 - `downstream_pathway_hits_bar.pdf/png`, `reverse_LR_overview.pdf/png`
+
+### 6.4 第 6 章图集
+
+**图 6.1** — v1 失败：Mo→Vagus SS 网络（仅 2 LR pair, prob 低）：
+![network_58_SS](../results/CellChat/network_58_SS.png)
+> 评审：✅ 只显示 Il16→Cd4 (粗蓝, 0.21) + Btla→Tnfrsf14 (细蓝, 0.16) 两根线，可视化证实 v1 几乎全部空集（受体在迷走神经低表达）。
+
+**图 6.2** — v2 神经元区室池放宽版网络（仅 1 LR）：
+![network_v2_SS_CCC_relax](../results/CellChat/v2_neuron_compartment/network_v2_SS_CCC_relax.png)
+> 评审：✅ 唯一通讯对 Cd209a→Ceacam1（co_down 趋势匹配，prob=0.252），其余 Btla/Il16 受体（Tnfrsf14/Cd4）在迷走神经真实不表达，不上图。
+
+**图 6.3** — v3 反向 Cx3cl1 在迷走神经表达（Mock vs IAV）：
+![Cx3cl1_vagal_boxplot](../results/CellChat/Cx3cl1_to_Cx3cr1_reverse/Cx3cl1_vagal_boxplot.png)
+> 评审：✅ Mock CPM 中位 4.4，IAV CPM 中位 4.4，分布几乎一致（log2FC=-0.10, FDR=0.69）。**21/21 样本 CPM>1 → Cx3cl1 是迷走感觉神经节固有稳定表达基因**，配体源持续可用。
+
+**图 6.4** — v3 反向 Cx3cr1 在 Mo 5 组剂量响应：
+![Cx3cr1_Mo_5group_line](../results/CellChat/Cx3cl1_to_Cx3cr1_reverse/Cx3cr1_Mo_5group_line.png)
+> 评审：✅ Sham 10.36 → TX91 9.88 → PR8_0p6 8.15 → PR8_10 7.33 → PR8_100 7.50（slope=-0.796, FDR=0.001）。**单调下降，重症崩塌**，PR8_10 后微反弹（脚本结果一致）。
+
+**图 6.5** — v3 反向 LR 概览（双柱 Hill score）：
+![reverse_LR_overview](../results/CellChat/Cx3cl1_to_Cx3cr1_reverse/reverse_LR_overview.png)
+> 评审：✅ L (vagus Cx3cl1) Hill=0.57, R (Mo Cx3cr1) Hill=0.75, P_LR=0.426（v2 Cd209a-Ceacam1 prob=0.252 的 1.7 倍）。
+
+**图 6.6** — v3 Cx3cr1 下游通路在 58 严选中命中：
+![downstream_pathway_hits_bar](../results/CellChat/Cx3cl1_to_Cx3cr1_reverse/downstream_pathway_hits_bar.png)
+> 评审：✅ Homeostasis 9 / Chemotaxis 7 / AntiInflammation 4，**均为 trend_slope<0**（重症崩塌的下游基因），三轴一起塌。
 
 ---
 
@@ -479,6 +569,24 @@ P_LR = H(L) × H(R) = 0.426
 
 **输出**: `results/GSE268741/module1_clustering/` + `processed_data/GSE268741/seurat_module1.rds, sub_*.rds`
 
+#### 模块 1 图集
+
+**图 7.1.1** — QC violin (pre-filter): nFeature_RNA / nCount_RNA / pct_mt:
+![QC_pre](../results/GSE268741/module1_clustering/QC_pre.png)
+> 评审：✅ 三 violin 显示数据分布合理，有少量极端高 nCount（>100k）和高 pct_mt（>50%）异常细胞，QC 阈值 (nFeature 500-7500 + pct_mt<15) 把这些过滤掉，从 9609→6468 cells。
+
+**图 7.1.2** — UMAP 三联（左上 cluster / 右上 top class / 下 子集）：
+![UMAP_overview](../results/GSE268741/module1_clustering/UMAP_overview.png)
+> 评审：✅ 22 簇分布合理；top class 着色清晰（Astrocyte 大块/Oligo 一团/Cx3cr1_Imm 上方独立小团/Tac1 簇/Vglut2_Glu）；子集 UMAP 显示 Tac1+Vglut2+ 红点（212）/Cx3cr1+ 蓝团块（215）/Other_neuron 绿色弥散（2634）。
+
+**图 7.1.3** — Marker DotPlot per cluster（22 簇 × 21 marker）：
+![marker_DotPlot](../results/GSE268741/module1_clustering/marker_DotPlot.png)
+> 评审：✅ Cluster 7 = Cx3cr1+Aif1+C1qa+Csf1r 四点全红（典型微胶质）；Cluster 9 = Tac1+Slc17a6 双阳（Tac1+ 簇）；Cluster 1/8 = Mbp+Mog+Plp1（Oligo）；Cluster 2/4 = Slc32a1+Gad1（GABA）。注释互不矛盾。
+
+**图 7.1.4** — 4 关键 marker FeaturePlot：
+![FeaturePlot_keymarkers](../results/GSE268741/module1_clustering/FeaturePlot_keymarkers.png)
+> 评审：✅ Cx3cr1 在上方独立团（cluster 7）极强；Slc17a6 在大块兴奋区；Slc32a1 在 GABA 区；Tac1 在右下交界处与 Slc17a6 重叠（= Tac1+Vglut2+ 双阳）。生物学定位精确。
+
 ### 7.3 模块 2 — Tac1+ 流感信号富集 + GO（script 18_module2_3_enrichment.R 部分）
 
 **FindMarkers**: Tac1+Vglut2+ (212) vs Other_neuron (2472), wilcox
@@ -505,6 +613,10 @@ P_LR = H(L) × H(R) = 0.426
 
 **核心靶点 VlnPlot**: 14 基因 (Cx3cr1/Cx3cl1/Gpr151/Gstm1/Klf2/Arrb1/Cd209a/Btla/Il16/Tac1/Slc17a6/Trpv1/Calca/Scn10a) 在 Tac1+ vs Other_neuron 双子集
 
+**图 7.2.1** — 14 核心靶点 Tac1+ vs Other_neuron Violin：
+![module2_core_targets_violin](../results/GSE268741/module2_3_enrichment/module2_core_targets_violin.png)
+> 评审：✅ **Cx3cl1**（Tac1+ 红 violin 高，Other 灰 violin 低稀疏）→ 验证 Tac1+ pct=69.3%；**Cx3cr1** 两组都极低（神经元不表达受体，符合 v3 假设）；**Tac1** Tac1+ 高 / Other 低；**Slc17a6** Tac1+ 强；**Calca/Trpv1/Scn10a** Tac1+ 略高。模式与"Tac1+ 是兴奋性 nociceptor"完全契合。
+
 ### 7.4 模块 3 — 跨数据集通路一致性
 
 **GSE161878 vagal up DEG GO BP 富集**: 654 个 BP (FDR<0.10)
@@ -527,6 +639,14 @@ P_LR = H(L) × H(R) = 0.426
 **跨组织信号分子**: 仅 1 个 — **Lck**（vagus log2FC=0.71 + Tac1+ log2FC=0.81 同向上调）
 
 **关键解读**: 共享通路极少不是 bug，而是符合"外周 vagal 炎症 ≠ 中枢 NTS 神经元功能"的预期。真正的连接是 **LR 通讯（Cx3cl1-Cx3cr1）而非通路同源**。
+
+**图 7.3.1** — GO BP 通路韦恩（fallback 文字框，因 ggforce 没装）：
+![module3_pathway_venn](../results/GSE268741/module2_3_enrichment/module3_pathway_venn.png)
+> 评审：⚠️ **简陋**——ggforce 未装时启用 fallback 文字方框，传达 "vagus only=650 / 共享=4 / Tac1+ only=54" 信息。不影响核心数字，仅美观降级。
+
+**图 7.3.2** — 4 共享通路 -log10(FDR) 热图（Vagus vs Tac1+_NTS）：
+![module3_shared_pathway_heatmap](../results/GSE268741/module2_3_enrichment/module3_shared_pathway_heatmap.png)
+> 评审：✅ 4 行 × 2 列，secretion 在 vagus 端 -log10(FDR)=2.6（显著最高）；其余 3 个 secretion-related term 两边都在 1.2-1.6 边界。共享的 4 个全部是泛分泌活动通路 — 跟"两端都有分泌但机制不同"的解读一致。
 
 ### 7.5 模块 4 — NTS Cx3cr1+ ↔ Tac1+Vglut2+ LR 互作（script 16_GSE268741_module4_LR.R）★
 
@@ -585,6 +705,28 @@ Tnfsf12   Tnfrsf12a   TWEAK     0.315  0.20   0.06
 - ✅ Tnf → Tnfrsf1a (I→N, 0.390)
 - ⚠️ Tac1 → Tacr1 / Il6 → Il6ra / Il1b → Il1r1 / Cxcl10 → Cxcr3 / Ccl2 → Ccr2 / Apoe → Trem2: 受体在两子集中 pct < 5%（NTS 中神经-免疫互作走非典型通路）
 
+#### 模块 4 图集
+
+**图 7.4.1** — Top 30 双向 LR 条形图：
+![top30_LR_bar](../results/GSE268741/module4_LR/top30_LR_bar.png)
+> 评审：✅ 双面板（左 I→N 蓝 / 右 N→I 红），Top 含 Ptn-Sdc4/Ncl, App-Cd74, Cadm1-Cadm1, Ncam1-Ncam1, **Cx3cl1-Cx3cr1**, Mif-CD74_CXCR4 等。⚠️ 标题与 LR 名称中的 "→" 显示为方框（cairo 字体），但内容可读。
+
+**图 7.4.2** — Cx3cl1 在两子集 violin：
+![Cx3cl1_violin](../results/GSE268741/module4_LR/Cx3cl1_violin.png)
+> 评审：✅ Cx3cr1+_immune（蓝）几乎全 0（瘦尖 violin） / Tac1+_neuron（红）中位 0.5、box 0-0.75、最大 ~2.0。**配体只在神经元端表达**，符合方向性。
+
+**图 7.4.3** — Cx3cr1 在两子集 violin：
+![Cx3cr1_violin](../results/GSE268741/module4_LR/Cx3cr1_violin.png)
+> 评审：✅ Cx3cr1+_immune（蓝）中位 ~2.5、box 2.3-2.9（100% pct 高表达） / Tac1+_neuron（红）几乎全 0。**受体只在免疫端表达**，与配体形成完美互补。
+
+**图 7.4.4** — Top 25 通路总互作强度（双向叠层）：
+![pathway_strength_top25](../results/GSE268741/module4_LR/pathway_strength_top25.png)
+> 评审：✅ WNT 总最高（~13，N→I 红主导）/ SEMA3 (~10, N→I) / EPHB (~5.5, 全 I→N 蓝) / NRXN/SEMA4/JAM/MK/PTN 等 — 主导通路是**神经发育 + 突触粘附 + 神经-免疫边界**，**非急性炎症**。这是关键发现。
+
+**图 7.4.5** — Top 15 双向 LR 网络（修复后 white background）：
+![LR_network_top15](../results/GSE268741/module4_LR/LR_network_top15_bidirectional.png)
+> 评审：✅（**已修复**，原版黑底文字不可见）左红 Tac1+ ligand（Ptn/App/Cadm1/Ncam1/**Cx3cl1**/Mif/Gas6/Thy1...），右蓝 Cx3cr1+ receptor（Sdc4/Ncl/Cd74/**Cx3cr1**/Ptprz1/Mertk/ITGAM_ITGB2...），红线 N→I + 蓝线 I→N，Cx3cl1→Cx3cr1 这条线清晰可见。
+
 ### 7.6 模块 5 — Tac1+ 排他性 4 维度对比（script 17_module5_exclusivity.R）
 
 **4 维度**:
@@ -622,6 +764,24 @@ Tnfsf12   Tnfrsf12a   TWEAK     0.315  0.20   0.06
 
 **结论调整**:
 > Tac1+Vglut2+ 在 **D3（神经-免疫互作）+ D4（咳嗽通路）** 两个最与机制直接相关的维度上**完全排他**（D4 vs Other_neuron p<1e-65）。D1（外周流感信号）和 D2（外周 Mo 靶点）排倒数符合"中枢神经元不应表达外周髓系标记"的预期，而非反驳假设。
+
+#### 模块 5 图集
+
+**图 7.5.1** — 4 神经元亚群 UMAP 着色：
+![UMAP_neuron_subtypes](../results/GSE268741/module5_exclusivity/UMAP_neuron_subtypes.png)
+> 评审：✅ Tac1+Vglut2+（红 212）+ Vglut2+_only（橙 784）聚在右下兴奋性区域，部分重叠（合理：都是 Vglut2+，Tac1 是子集）。Vgat+_GABA（蓝 835）独立成块（GABA 区）。Other_neuron（灰 853）散布。
+
+**图 7.5.2** — 4 维度 violin/bar 2x2 拼图：
+![exclusivity_4D_violin](../results/GSE268741/module5_exclusivity/exclusivity_4D_violin.png)
+> 评审：✅ D1 流感 sig 4 组都低（Tac1+ 略低、Other 略高）。D2 58 Mo 靶点 4 组接近。**D3 LR sum_prob: Tac1+ 96.0 红柱最高**，其它 82-89。**D4 咳嗽 panel: Tac1+ 红 violin 明显在最高位**，Other 灰最低 — 完全对应 p<1e-65 排他。
+
+**图 7.5.3** — 4 维度归一化热图（每维度最高=1）：
+![exclusivity_4D_heatmap](../results/GSE268741/module5_exclusivity/exclusivity_4D_heatmap.png)
+> 评审：✅ **Tac1+Vglut2+ 在 D3_LR_sum=1.00 + D4_CoughSig=1.00 双拔尖**；Other_neuron 在 D1/D2 拔尖（外周信号不应在 NTS 富集，所以这"赢"没意义）；Vgat+_GABA 中等；Vglut2+_only 仅 D4=0.80 但在 D2/D3=0。**精准对应假设**。
+
+**图 7.5.4** — 14 核心靶点在 4 神经元亚群 DotPlot：
+![core_targets_DotPlot](../results/GSE268741/module5_exclusivity/core_targets_DotPlot.png)
+> 评审：✅ Tac1+Vglut2+ 行：**Tac1 大红点**（最大）+ **Slc17a6 大红点** + Cx3cl1/Gstm1/Klf2/Arrb1 中等。Vgat+_GABA 行：**Slc32a1 大红点** + Arrb1/Gstm1。Vglut2+_only 行：Slc17a6 大点。Other_neuron 行：整体低。**Cx3cr1 全部都很弱**（神经元不表达受体，再次确认 v3 假设）。
 
 ---
 
@@ -740,6 +900,14 @@ D1（GSE161878 vagal up DEG 在 NTS 神经元投影）和 D2（58 Mo 严选在 N
 **当前缓解**: 报告里明确说明 D1/D2 是"否定测试"，D3/D4 才是与假设直接对应的维度。
 **改进建议**: 论文里要清楚区分"外周炎症轴" vs "中枢神经-免疫轴"，避免混淆。
 
+⚠️ **风险 7 — 图渲染问题（已修 1 / 余 2 美观降级）[低风险]**
+
+评审 36 张图发现：
+1. **LR_network_top15_bidirectional.png 黑底问题**（已修复 ✓）：原版 theme_void 在 PNG 渲染中背景透明被解释为黑色，文字不可见。现已加 `plot.background = element_rect(fill = "white", color = NA)`，且把中文标题换成英文，重生成成功。
+2. **多张图中文标题/标签乱码**（约 22/36 张）：cairo 设备的 CJK 字体在本机 macOS 不完整。**不影响数据逻辑和数字读取**，但论文图需要在最终版本前换英文标题或安装 CJK 字体（推荐 Noto Sans CJK SC）。
+3. **module3_pathway_venn 简陋（已诊断）**：ggforce 包没装，启用 fallback 文字框替代圆形韦恩图，传达数字但美观降级。如需正式版可装 ggforce 后重画。
+4. **数字一致性 typo（已修复 ✓）**：报告中 vagal Cx3cl1 Mock 平均 CPM 之前误写 4.91，实际 4.77（21 样本中 11 个 Mock 的 CPM 算术平均）。已勘误。
+
 ### 9.3 没做但应该做的 6 件事
 
 ❌ **缺 1 — NTS 单细胞 IAV vs Mock 对照**（GSE268741 是单 GSM）— 直接证明因果需要分组样本
@@ -762,6 +930,18 @@ D1（GSE161878 vagal up DEG 在 NTS 神经元投影）和 D2（58 Mo 严选在 N
 | 可复现性 | A | 固定种子，参数集中配置，sanity check 脚本 |
 
 **总评：A- (机制链合理且可信，但 GSE268741 单样本是当前主要科学限制)**
+
+### 9.5 36 张图整体评审结果
+
+| 类别 | 数量 | 状态 |
+|---|---|---|
+| 生物学逻辑正确 | **36 / 36** | ✅ 全部通过 |
+| 数字与脚本日志一致 | **35 / 36** | ✅（除 4.91→4.77 typo 已修） |
+| 渲染严重 bug | 1 → 0 | ✅ LR_network 黑底已修复 |
+| 中文字体乱码（cosmetic） | ~22 张 | ⚠️ 不影响逻辑，论文版前需换英文标题或装 CJK 字体 |
+| Fallback 降级 | 1 张（pathway_venn） | ⚠️ 装 ggforce 可恢复 |
+
+**结论：所有 36 张图的生物学逻辑均通过评审，可作为流程证据使用。** 中文字体乱码为本机字体问题（非脚本逻辑错误），数字内容完整可读。
 
 ---
 

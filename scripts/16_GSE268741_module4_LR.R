@@ -422,7 +422,7 @@ p_net <- ggplot() +
   geom_point(data = node_df, aes(x, y, color = side), size = 4) +
   geom_text(data = node_df, aes(x, y, label = sub("@.*","", name),
                                  hjust = ifelse(x == 0, 1.1, -0.1)),
-            size = 3.2) +
+            size = 3.2, color = "black") +
   scale_color_manual(values = c(
     N = "#D62728", I = "#1F77B4",
     "Tac1+_neuron -> Cx3cr1+_immune" = "#D62728",
@@ -430,11 +430,13 @@ p_net <- ggplot() +
   scale_linewidth_continuous(range = c(0.4, 2)) +
   scale_alpha_continuous(range = c(0.4, 1)) +
   coord_cartesian(xlim = c(-0.4, 1.4), clip = "off") +
-  labs(title = "NTS 神经-免疫 LR 通讯网络 (Top 15 双向合并)",
-       subtitle = "左=N(Tac1+ 神经元), 右=I(Cx3cr1+ 免疫); 红=N->I, 蓝=I->N") +
+  labs(title = "NTS Neuro-Immune LR Network (Top 15 bidirectional)",
+       subtitle = "Left=N(Tac1+ neuron), Right=I(Cx3cr1+ immune); red=N->I, blue=I->N") +
   theme_void(base_size = 10) +
   theme(plot.margin = margin(15, 80, 15, 80),
-        legend.position = "none")
+        legend.position = "none",
+        plot.background  = element_rect(fill = "white", color = NA),
+        panel.background = element_rect(fill = "white", color = NA))
 ggsave(file.path(OUT, "LR_network_top15_bidirectional.pdf"), p_net,
        width = 11, height = 9, device = cairo_pdf, limitsize = FALSE)
 ggsave(file.path(OUT, "LR_network_top15_bidirectional.png"), p_net,
