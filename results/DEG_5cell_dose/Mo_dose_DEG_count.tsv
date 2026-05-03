@@ -1,0 +1,5 @@
+cell	contrast	n_total	n_up	n_down	dose_label	dose_num
+Mo	TX91_vs_Sham	373	321	52	TX91 (轻症)	0.1
+Mo	PR8_0p6_vs_Sham	1317	783	534	PR8 0.6LD50	0.6
+Mo	PR8_10_vs_Sham	1551	864	687	PR8 10LD50	10
+Mo	PR8_100_vs_Sham	1788	965	823	PR8 100LD50 (重症)	100
