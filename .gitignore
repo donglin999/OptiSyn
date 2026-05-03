@@ -37,3 +37,7 @@ reports/pipeline_report_v2.html
 # 大体积全表 (320K 行 / 64K 行) — 已 gzip 压缩存储
 results/DEG_5cell_dose/DEG_full_5cell_4contrast.tsv
 results/DEG_5cell_dose/Mo_dose_DEG_full.tsv
+
+# PPT 中间文件
+reports/PPT_kaiti_huibao.html
+reports/PPT_pandoc.md
